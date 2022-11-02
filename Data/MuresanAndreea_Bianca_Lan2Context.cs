@@ -19,5 +19,7 @@ namespace MuresanAndreea_Bianca_Lan2.Data
         public DbSet<MuresanAndreea_Bianca_Lan2.Models.Publisher> Publisher { get; set; }
 
         public DbSet<MuresanAndreea_Bianca_Lan2.Models.Author> Author { get; set; }
+
+        public DbSet<MuresanAndreea_Bianca_Lan2.Models.Category> Category { get; set; }
     }
 }
