@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MuresanAndreea_Bianca_Lan2.Data;
 using MuresanAndreea_Bianca_Lan2.Models;
 
-namespace MuresanAndreea_Bianca_Lan2.Pages.Books
+namespace MuresanAndreea_Bianca_Lan2.Pages.Authors
 {
     public class CreateModel : PageModel
     {
@@ -21,32 +21,22 @@ namespace MuresanAndreea_Bianca_Lan2.Pages.Books
 
         public IActionResult OnGet()
         {
-            var authorList = _context.Author.Select(x => new
-            {
-                x.ID,
-                FullName = x.LastName + " " + x.FirstName
-            });
-
-            ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName");
-            ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID",
-"PublisherName");
-
             return Page();
         }
 
         [BindProperty]
-        public Book Book { get; set; }
-
+        public Author Author { get; set; }
+        
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+          if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Book.Add(Book);
+            _context.Author.Add(Author);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

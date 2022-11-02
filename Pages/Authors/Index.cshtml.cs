@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MuresanAndreea_Bianca_Lan2.Data;
 using MuresanAndreea_Bianca_Lan2.Models;
 
-namespace MuresanAndreea_Bianca_Lan2.Pages.Books
+namespace MuresanAndreea_Bianca_Lan2.Pages.Authors
 {
     public class IndexModel : PageModel
     {
@@ -19,16 +19,13 @@ namespace MuresanAndreea_Bianca_Lan2.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get; set; } = default!;
+        public IList<Author> Author { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Book != null)
+            if (_context.Author != null)
             {
-                Book = await _context.Book
-                    .Include(b => b.Author)
-                    .Include(b => b.Publisher)
-                    .ToListAsync();
+                Author = await _context.Author.ToListAsync();
             }
         }
     }

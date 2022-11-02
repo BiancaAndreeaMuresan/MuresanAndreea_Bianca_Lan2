@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MuresanAndreea_Bianca_Lan2.Data;
 using MuresanAndreea_Bianca_Lan2.Models;
 
-namespace MuresanAndreea_Bianca_Lan2.Pages.Books
+namespace MuresanAndreea_Bianca_Lan2.Pages.Authors
 {
     public class DeleteModel : PageModel
     {
@@ -20,41 +20,40 @@ namespace MuresanAndreea_Bianca_Lan2.Pages.Books
         }
 
         [BindProperty]
-        public Book Book { get; set; }
+      public Author Author { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Book == null)
+            if (id == null || _context.Author == null)
             {
                 return NotFound();
             }
 
-            var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+            var author = await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (book == null)
+            if (author == null)
             {
                 return NotFound();
             }
-            else
+            else 
             {
-                Book = book;
+                Author = author;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Book == null)
+            if (id == null || _context.Author == null)
             {
                 return NotFound();
             }
-            var book = await _context.Book.FindAsync(id);
+            var author = await _context.Author.FindAsync(id);
 
-            if (book != null)
+            if (author != null)
             {
-                Book = book;
-
-                _context.Book.Remove(Book);
+                Author = author;
+                _context.Author.Remove(Author);
                 await _context.SaveChangesAsync();
             }
 
