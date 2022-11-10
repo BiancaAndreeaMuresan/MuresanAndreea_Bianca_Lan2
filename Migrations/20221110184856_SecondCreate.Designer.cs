@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MuresanAndreea_Bianca_Lan2.Data;
 
@@ -11,9 +12,10 @@ using MuresanAndreea_Bianca_Lan2.Data;
 namespace MuresanAndreea_Bianca_Lan2.Migrations
 {
     [DbContext(typeof(MuresanAndreea_Bianca_Lan2Context))]
-    partial class MuresanAndreea_Bianca_Lan2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221110184856_SecondCreate")]
+    partial class SecondCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
